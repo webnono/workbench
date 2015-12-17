@@ -16,17 +16,6 @@ create table sys_user (
 create unique index idx_sys_user_username on sys_user(username);
 create index idx_sys_user_organization_id on sys_user(organization_id);
 
-create table sys_organization (
-  id bigint auto_increment,
-  name varchar(100),
-  parent_id bigint,
-  parent_ids varchar(100),
-  available bool default false,
-  constraint pk_sys_organization primary key(id)
-) charset=utf8 ENGINE=InnoDB;
-create index idx_sys_organization_parent_id on sys_organization(parent_id);
-create index idx_sys_organization_parent_ids on sys_organization(parent_ids);
-
 
 create table sys_resource (
   id bigint auto_increment,
