@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+       <!--<description>apache shiro配置</description>-->
+       <import resource="ehcache-spring.xml"/>
+
+       <!--缓存管理器-->
+       <bean id="cacheManager"
+             class="com.webnono.core.cache.SpringCacheManagerWrapper">
+              <property name="cacheManager" ref="springCacheManager"/>
+       </bean>
+       <!--凭证管理器-->
+       <bean id="credentialsMatcher"
+             class="com.webnono.core.credentials.RetryLimitHashedCredentialsMatcher">
+              <constructor-arg ref="cacheManager"/>
+              <property name="hashAlgorithmName" value="md5"/>
+              <property name="hashIterations" value="2"/>
+              <property name="storedCredentialsHexEncoded" value="true"/>
+       </bean>
+       <!--realm实现-->
+       <bean id="userRealm"
+             class="com.webnono.core.realm.UserRealm">
+              <property name="cachingEnabled" value="false"/>
+              <property name="credentialsMatcher" ref="credentialsMatcher"/>
+       </bean>
+
+       <!--会话dao-->
+       <bean id="sessionDao" class="org.apache.shiro.session.mgt.eis.MemorySessionDAO"/>
+
+
+       <!-- 会话管理器 -->
+       <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+              <property name="sessionDAO" ref="sessionDao"/>
+       </bean>
+
+       <!--安全管理器-->
+       <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+              <property name="realm" ref="userRealm"/>
+       </bean>
+
+       <!-- Shiro的Web过滤器 -->
+       <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+              <property name="securityManager" ref="securityManager"/>
+              <property name="loginUrl" value="/login"/>
+              <property name="successUrl" value="/index"/>
+              <property name="unauthorizedUrl" value="/unauthorized"/>
+              <property name="filterChainDefinitions">
+                     <value>
+                            /login = anon
+                            /logout = anon
+                            /js/** = anon
+                            /images/** = anon
+                            /css/** = anon
+                            /** = authc
+                     </value>
+              </property>
+       </bean>
+
+       <!-- Shiro生命周期处理器-->
+       <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+</beans>
