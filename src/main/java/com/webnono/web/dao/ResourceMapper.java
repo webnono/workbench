@@ -5,7 +5,9 @@ import com.webnono.web.model.Resource;
 import com.webnono.web.model.ResourceCriteria;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ResourceMapper extends GenericDao<Resource,Long> {
     int countByExample(ResourceCriteria example);
 

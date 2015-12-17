@@ -5,7 +5,9 @@ import com.webnono.web.model.Goods;
 import com.webnono.web.model.GoodsCriteria;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface GoodsMapper extends GenericDao<Goods,Integer> {
     int countByExample(GoodsCriteria example);
 

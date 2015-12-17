@@ -5,7 +5,9 @@ import com.webnono.web.model.User;
 import com.webnono.web.model.UserCriteria;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UserMapper extends GenericDao<User,Long> {
     int countByExample(UserCriteria example);
 

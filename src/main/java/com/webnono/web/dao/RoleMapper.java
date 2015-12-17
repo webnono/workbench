@@ -5,7 +5,9 @@ import com.webnono.web.model.Role;
 import com.webnono.web.model.RoleCriteria;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface RoleMapper extends GenericDao<Role,Long>{
     int countByExample(RoleCriteria example);
 
