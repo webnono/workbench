@@ -11,21 +11,13 @@ public interface RoleMapper extends GenericDao<Role,Long>{
 
     int deleteByExample(RoleCriteria example);
 
-    int deleteByPrimaryKey(Long id);
-
     int insert(Role record);
 
-    int insertSelective(Role record);
-
     List<Role> selectByExample(RoleCriteria example);
-
-    Role selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") Role record, @Param("example") RoleCriteria example);
 
     int updateByExample(@Param("record") Role record, @Param("example") RoleCriteria example);
-
-    int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
 }

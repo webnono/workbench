@@ -11,21 +11,13 @@ public interface GoodsMapper extends GenericDao<Goods,Integer> {
 
     int deleteByExample(GoodsCriteria example);
 
-    int deleteByPrimaryKey(Integer goodsId);
-
     int insert(Goods record);
 
-    int insertSelective(Goods record);
-
     List<Goods> selectByExample(GoodsCriteria example);
-
-    Goods selectByPrimaryKey(Integer goodsId);
 
     int updateByExampleSelective(@Param("record") Goods record, @Param("example") GoodsCriteria example);
 
     int updateByExample(@Param("record") Goods record, @Param("example") GoodsCriteria example);
-
-    int updateByPrimaryKeySelective(Goods record);
 
     int updateByPrimaryKey(Goods record);
 }
