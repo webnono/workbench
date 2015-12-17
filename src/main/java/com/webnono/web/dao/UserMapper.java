@@ -1,11 +1,12 @@
 package com.webnono.web.dao;
 
+import com.webnono.core.generic.GenericDao;
 import com.webnono.web.model.User;
 import com.webnono.web.model.UserCriteria;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface UserMapper {
+public interface UserMapper extends GenericDao<User,Long> {
     int countByExample(UserCriteria example);
 
     int deleteByExample(UserCriteria example);
