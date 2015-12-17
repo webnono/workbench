@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.webnono.web.dao.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.webnono.web.model.Goods" >
+    <id column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="goods_cost" property="goodsCost" jdbcType="DECIMAL" />
+    <result column="goods_tb_price" property="goodsTbPrice" jdbcType="DECIMAL" />
+    <result column="goods_uploadtime" property="goodsUploadtime" jdbcType="TIMESTAMP" />
+    <result column="goods_addtime" property="goodsAddtime" jdbcType="TIMESTAMP" />
+    <result column="goods_uploader" property="goodsUploader" jdbcType="VARCHAR" />
+    <result column="goods_adder" property="goodsAdder" jdbcType="VARCHAR" />
+    <result column="goods_status" property="goodsStatus" jdbcType="BIT" />
+    <result column="goods_deletetime" property="goodsDeletetime" jdbcType="TIMESTAMP" />
+    <result column="goods_category" property="goodsCategory" jdbcType="VARCHAR" />
+    <result column="goods_url" property="goodsUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    goods_id, goods_name, goods_cost, goods_tb_price, goods_uploadtime, goods_addtime, 
+    goods_uploader, goods_adder, goods_status, goods_deletetime, goods_category, goods_url
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.webnono.web.model.GoodsCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.webnono.web.model.GoodsCriteria" >
+    delete from goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.webnono.web.model.Goods" >
+    insert into goods (goods_id, goods_name, goods_cost, 
+      goods_tb_price, goods_uploadtime, goods_addtime, 
+      goods_uploader, goods_adder, goods_status, 
+      goods_deletetime, goods_category, goods_url
+      )
+    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsCost,jdbcType=DECIMAL}, 
+      #{goodsTbPrice,jdbcType=DECIMAL}, #{goodsUploadtime,jdbcType=TIMESTAMP}, #{goodsAddtime,jdbcType=TIMESTAMP}, 
+      #{goodsUploader,jdbcType=VARCHAR}, #{goodsAdder,jdbcType=VARCHAR}, #{goodsStatus,jdbcType=BIT}, 
+      #{goodsDeletetime,jdbcType=TIMESTAMP}, #{goodsCategory,jdbcType=VARCHAR}, #{goodsUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.webnono.web.model.Goods" >
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsCost != null" >
+        goods_cost,
+      </if>
+      <if test="goodsTbPrice != null" >
+        goods_tb_price,
+      </if>
+      <if test="goodsUploadtime != null" >
+        goods_uploadtime,
+      </if>
+      <if test="goodsAddtime != null" >
+        goods_addtime,
+      </if>
+      <if test="goodsUploader != null" >
+        goods_uploader,
+      </if>
+      <if test="goodsAdder != null" >
+        goods_adder,
+      </if>
+      <if test="goodsStatus != null" >
+        goods_status,
+      </if>
+      <if test="goodsDeletetime != null" >
+        goods_deletetime,
+      </if>
+      <if test="goodsCategory != null" >
+        goods_category,
+      </if>
+      <if test="goodsUrl != null" >
+        goods_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCost != null" >
+        #{goodsCost,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsTbPrice != null" >
+        #{goodsTbPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsUploadtime != null" >
+        #{goodsUploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsAddtime != null" >
+        #{goodsAddtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsUploader != null" >
+        #{goodsUploader,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsAdder != null" >
+        #{goodsAdder,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsStatus != null" >
+        #{goodsStatus,jdbcType=BIT},
+      </if>
+      <if test="goodsDeletetime != null" >
+        #{goodsDeletetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsCategory != null" >
+        #{goodsCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsUrl != null" >
+        #{goodsUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.webnono.web.model.GoodsCriteria" resultType="java.lang.Integer" >
+    select count(*) from goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update goods
+    <set >
+      <if test="record.goodsId != null" >
+        goods_id = #{record.goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsName != null" >
+        goods_name = #{record.goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsCost != null" >
+        goods_cost = #{record.goodsCost,jdbcType=DECIMAL},
+      </if>
+      <if test="record.goodsTbPrice != null" >
+        goods_tb_price = #{record.goodsTbPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.goodsUploadtime != null" >
+        goods_uploadtime = #{record.goodsUploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.goodsAddtime != null" >
+        goods_addtime = #{record.goodsAddtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.goodsUploader != null" >
+        goods_uploader = #{record.goodsUploader,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsAdder != null" >
+        goods_adder = #{record.goodsAdder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsStatus != null" >
+        goods_status = #{record.goodsStatus,jdbcType=BIT},
+      </if>
+      <if test="record.goodsDeletetime != null" >
+        goods_deletetime = #{record.goodsDeletetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.goodsCategory != null" >
+        goods_category = #{record.goodsCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsUrl != null" >
+        goods_url = #{record.goodsUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update goods
+    set goods_id = #{record.goodsId,jdbcType=INTEGER},
+      goods_name = #{record.goodsName,jdbcType=VARCHAR},
+      goods_cost = #{record.goodsCost,jdbcType=DECIMAL},
+      goods_tb_price = #{record.goodsTbPrice,jdbcType=DECIMAL},
+      goods_uploadtime = #{record.goodsUploadtime,jdbcType=TIMESTAMP},
+      goods_addtime = #{record.goodsAddtime,jdbcType=TIMESTAMP},
+      goods_uploader = #{record.goodsUploader,jdbcType=VARCHAR},
+      goods_adder = #{record.goodsAdder,jdbcType=VARCHAR},
+      goods_status = #{record.goodsStatus,jdbcType=BIT},
+      goods_deletetime = #{record.goodsDeletetime,jdbcType=TIMESTAMP},
+      goods_category = #{record.goodsCategory,jdbcType=VARCHAR},
+      goods_url = #{record.goodsUrl,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.webnono.web.model.Goods" >
+    update goods
+    <set >
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCost != null" >
+        goods_cost = #{goodsCost,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsTbPrice != null" >
+        goods_tb_price = #{goodsTbPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsUploadtime != null" >
+        goods_uploadtime = #{goodsUploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsAddtime != null" >
+        goods_addtime = #{goodsAddtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsUploader != null" >
+        goods_uploader = #{goodsUploader,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsAdder != null" >
+        goods_adder = #{goodsAdder,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsStatus != null" >
+        goods_status = #{goodsStatus,jdbcType=BIT},
+      </if>
+      <if test="goodsDeletetime != null" >
+        goods_deletetime = #{goodsDeletetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsCategory != null" >
+        goods_category = #{goodsCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsUrl != null" >
+        goods_url = #{goodsUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.webnono.web.model.Goods" >
+    update goods
+    set goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_cost = #{goodsCost,jdbcType=DECIMAL},
+      goods_tb_price = #{goodsTbPrice,jdbcType=DECIMAL},
+      goods_uploadtime = #{goodsUploadtime,jdbcType=TIMESTAMP},
+      goods_addtime = #{goodsAddtime,jdbcType=TIMESTAMP},
+      goods_uploader = #{goodsUploader,jdbcType=VARCHAR},
+      goods_adder = #{goodsAdder,jdbcType=VARCHAR},
+      goods_status = #{goodsStatus,jdbcType=BIT},
+      goods_deletetime = #{goodsDeletetime,jdbcType=TIMESTAMP},
+      goods_category = #{goodsCategory,jdbcType=VARCHAR},
+      goods_url = #{goodsUrl,jdbcType=VARCHAR}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+</mapper>
