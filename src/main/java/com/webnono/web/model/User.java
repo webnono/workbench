@@ -1,12 +1,17 @@
 package com.webnono.web.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
+
 public class User {
     private Long id;
 
     private Long organizationId;
 
+    @NotEmpty
     private String username;
-
+    @NotEmpty
     private String password;
 
     private String salt;
@@ -14,6 +19,13 @@ public class User {
     private String roleIds;
 
     private Boolean locked;
+
+    public User(){}
+
+    public User(String username,String password){
+        this.username = username;
+        this.password = password;
+    }
 
     public Long getId() {
         return id;
