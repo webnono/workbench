@@ -19,8 +19,8 @@
     http://www.springframework.org/schema/aop/spring-aop.xsd
     http://www.springframework.org/schema/util
     http://www.springframework.org/schema/util/spring-util.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
-       <!--自动扫描task包，将带有注解的类纳入spring容器-->
-       <context:component-scan base-package="com.webnono.web"></context:component-scan>
+       <!--自动扫描包，将带有注解的类纳入spring容器-->
+       <context:component-scan base-package="com.webnono"></context:component-scan>
 
        <!--引入配置文件-->
        <bean id="propertyConfigurer"
@@ -70,7 +70,7 @@
        </bean>
        <!--<mybatis:scan base-package="com.webnono.task.dao"/>&lt;!&ndash;可以代替下面的包扫描配置&ndash;&gt;-->
        <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-              <property name="basePackage" value="com.webnono.task.web.dao"/>
+              <property name="basePackage" value="com.webnono.web.dao"/>
        </bean>
        <!--对数据源dataSource进行事务管理-->
        <bean id="transactionManager"

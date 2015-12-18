@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <properties>
-        <property name="dialectClass" value="com.webnono.task.core.feature.orm.dialect.MySql5Dialect"/>
+        <property name="dialectClass" value="com.webnono.core.feature.orm.dialect.MySql5Dialect"/>
     </properties>
 
     <!-- 配置mybatis的缓存，延迟加载等等一系列属性 -->
@@ -56,10 +56,10 @@
 
     </settings>
 
-    <typeAliases>
-        <package name="com.webnono.task.web.model"/>
-        <package name="com.webnono.task.web.enums"/>
-    </typeAliases>
+    <!--<typeAliases>-->
+        <!--<package name="com.webnono.web.model"/>-->
+        <!--<package name="com.webnono.web.enums"/>-->
+    <!--</typeAliases>-->
 
     <!--<plugins>-->
         <!--<plugin interceptor="com.eliteams.quick4j.core.feature.pagehelper.mybatis.PaginationResultSetHandlerInterceptor"/>-->
