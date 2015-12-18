@@ -1,0 +1,105 @@
+﻿@charset 'utf-8';body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,canvas,header,footer,article,aside,section,nav,th,td,img{border:medium none;margin:0;padding:0;word-break:break-all;word-wrap:break-word}body,button,input,select,textarea{font:14px "Microsoft YaHei",tahoma,Srial,helvetica,sans-serif}ol,ul{list-style:none}img{border:0}a{color:#333;text-decoration:none}a:hover{text-decoration:none;color:#ff0084}a,input,textarea,button{outline:0}.cfff{color:#fff}.caa{color:#aaa}.cfather{color:#f80}.red{color:red}.c666{color:#666}.fwb{ font-weight:bold}.fwn{font-weight:normal}.clearfix:after,.ifloat:after,.row:after{content:'';clear:both;display:block;height:0;visibility:hidden}.clearfix,.ifloat,.row{*zoom:1}.fl,.ifloat>*{float:left}.fr{float:right}.pa{position:absolute}.pr{position:relative}.ma{margin-left:auto;margin-right:auto}.ml10{ margin-left:10px}.db,.row .row{display:block}.dib,.iblock>*{display:inline-block;*display:inline;*zoom:1}.vam{vertical-align:middle}.tc{text-align:center}.tr{text-align:right}.f11{font-size:11px}.f12{font-size:12px}.f13{font-size:13px}.f14{font-size:14px}.f16{font-size:16px}.f18{font-size:18px}.f20{font-size:20px}.f24{font-size:24px}.f26{font-size:26px}.w100{width:100%}.table tbody tr:hover{ background-image:url(../images/noisy.png)}
+
+body{background-color:#9fc0cc;background:url(../images/top_bg.png) top center no-repeat;/*  background-size:100%*/}
+.text,textarea{color:#333;border:1px solid;border-color:#878ab2;border-radius:0;background:white;box-shadow:inset 0 0 1px rgba(0, 0, 0, .1);-webkit-appearance:none;-moz-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out ;transition:all .2s ease-in-out}
+.text:focus,textarea:focus,.search-item .text:focus{ border-color: rgba(98, 38, 233, 0.9);outline: 0;outline: thin dotted \9;/* IE6-9 */-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(98, 38, 233, 0.4);-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(98, 38, 233, 0.4);box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(98, 38, 233, 0.4); background:#fafafa}
+
+/*登陆**发布*/
+.login-box{width:530px;padding-bottom:46px; position:absolute;left:50%;top:50%; margin:-240px 0 0  -285px;background:#fff;/* background:rgba(38,205,247,.3)*/background:rgba(255,255,255,.88);border:2px dashed #5adcf6; box-shadow:6px 6px 0 rgba(0,0,0,.125)}
+.pub-box{ margin-top: -330px !important}
+.login-tit{ text-align:center; padding:20px 0 30px;color:#333}
+.cell{ margin:20px 50px}
+.text{/*width: 406px;*/width:100%;padding: 7px 11px;font-size: 16px;background: none}
+.button{display:block;height:50px; line-height:50px; border-radius:3px; text-align:center; font-size:18px;color:#fff}
+button.button,input.button{width:100%; cursor: pointer}
+.btn-e90{ background:#e90000}
+.btn-0c0{ background: #0b0}
+.btn-0c0:hover{background: #0c0;color:#fff}
+.btn-e90:hover{ background:red;color:#fff}
+
+/*列表*/
+.tabbox{ width:1300px; margin:1% auto; margin-top:91px; background-image: -webkit-linear-gradient(top, rgba(38,205,247,.39), #fff)/*235,230,211,.65*/;border:1px dotted #5adcf6;min-height:780px; font-family:Verdana; border-top:1px solid #32d0f5;}
+.tabbox>div{ padding:2%; position:relative; z-index:2}
+.table{ width:100%; border-right:1px solid #ddd;border-bottom:1px solid #ddd; border-spacing:0}
+.table td{padding:5px 8px;line-height:20px;text-align: left;vertical-align: top}
+.link{ color:#4095ce}
+.btn-rec{ display: inline-block; padding: 0 15px; line-height: 22px;  background: #0b0; color:#fff; border-radius: 2px}
+.btn-rec:hover{ background: #0c0; color: #fff}
+.rec-name,.rec-name:hover{ background:none;color:#999}
+.table td,.table th{border-top: 1px solid #eee; border-left:1px solid #ddd}
+.tabbox thead tr th{ height:34px; line-height:34px; color:#fff;background-color:#0f0c25;background-image: -webkit-linear-gradient(top, #333, #222); border-color:#444;}
+.table tbody tr:hover{ background-color:#f2f2f2 }
+.tabbox tbody tr.active{ background-color:#fcf0c1}
+.toe{-ms-text-overflow: ellipsis;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;word-wrap: normal; max-width:250px}
+.get-time{font-size:12px; color:#999}
+
+/*2015.5.6 主界面样式*/
+.header{height:65px; position:relative; z-index:100}
+.usermess{width:60%; margin-top:10px}
+.usermess>div{ float:right; padding:0 1%}
+
+.nav{ position:absolute; left:2%;top:100px;width:92px; z-index:800}
+.nav .sheep{ background:url(../images/sheep.png) no-repeat; height:100px;width:102px; margin-left:-8px}
+.nav .nav-li{ background:#0f0c25;background-image: -webkit-linear-gradient(top, #0f0c25, #2b2844); box-shadow:0 0 1px rgba(0,0,0,.1)}
+.nav .jf-f{ background:url(../images/f.png) 6px 0 no-repeat;height:139px;width:100px; display:none}
+.nav ul li{position:relative}
+.nav ul li a{display:block;line-height:30px; text-align:center;color:#fff;font-size:12px}
+.nav ul li a:hover{background-color: #1fd0f6}
+.nav ul li.active a{background-color:#fa558f;background-image: -webkit-linear-gradient(top, #fa69ce, #ed40b9);color:#db2415;color:#fff}
+.nav ul i{ position:absolute;right:-1px;top:1px; height:30px;width:8px; display:block; background:url(../images/menu.png) no-repeat center ; display:none; z-index:999}
+.nav ul .active i{display:block}
+.main-table{margin-left:120px}
+.main-table table{ background:#fff; background:rgba(255,255,255,.95)}
+
+.editbox{padding:15px 0 8px; text-align:right}
+.contfix{ position:fixed;width:100%; bottom:0;left:0; background:#fff; box-shadow:0 0 8px rgba(0,0,0,.2)}
+.contfix .fl{ margin-left:8%}
+.contfix .fr{ margin-right:8%}
+.editbox input{transition: 0.5s all;-webkit-transition: 0.5s all;-moz-transition: 0.5s all;-o-transition: 0.5s all;-ms-transition: 0.5s all;cursor:pointer;font-family:Verdana; font-size:13px;text-transform: uppercase; margin-right:8px}
+.editbox .fl input{color: #fff;background: #24cef7;padding:6px}
+.editbox .fr input{border:2px solid #ccc;background: #fff;padding:4px 25px; color:#666}
+.editbox .fr input:hover{border-color:#24cef7; border-width:2px; color:#24cef7}
+.editbox .fl input:hover{ background:#0c0b20; color:#fff}
+
+.page{ text-align:center;padding-top:20px; font-size:0}
+.page a{ display:inline-block;*display:inline;zoom:1; padding:4px 10px;  font-size:12px; border:1px solid #aaa; margin-left:-1px;color:#666}
+.page a:first-child{ border-radius:3px 0 0 3px}
+.page a:last-child{ border-radius:0 3px 3px 0}
+.page a:hover{ background:#f2f2f2}
+.page a.active{ background:#eee; color:red}
+
+.searchbox{padding:2px 2px 10px 3px;}
+.search-item{ float:left;width:28%; position:relative}
+.searchbtn-box{width:16%}
+.search-item .text{font-size:12px;padding:6px 10px; color:#1f2b17;width:78%;border-color:#353250; background:rgba(255,255,255,.7)}
+.search-item input.button{ height:32px; line-height:32px; font-size:16px;background-color:#1e2e32/*e85244*/;color:#dcf1ff}
+.search-item input.button:hover{background-color:#0d181b}
+
+.db-click{ display:none; position:absolute;right:10px;top:0; font-size:14px}
+.e-box{*padding-right:50px; min-width:60px}
+.e-box input{border:1px solid #FECC5B; font-weight:600;color:#2D4B8F;padding:0 5px;width:32px; box-shadow:1px 1px 1px rgba(0,0,0,.2)}
+.table tbody tr:Hover .db-click{ display:block}
+input[type="checkbox"]{ vertical-align:middle}
+
+/*6.24花瓣*/
+.tabbox>div>img{ position:absolute}
+.flower-img4{left:-286px;top:33%}
+
+@media (max-width:1700px){
+	.nav{top:98px}
+	}
+@media (max-width:1600px){
+	.nav{top:96px}
+	.tabbox{ width:90%}
+	.toe{max-width:250px}
+	.flower-img4{left:-165px}
+	}
+@media (max-width:1240px){
+	.nav{top:88px}
+	.toe{max-width:150px}
+	.tabbox{ width:96%}
+	}
+@media (max-width:960px){
+	.nav{top:86px}
+	.toe{max-width:100px}
+	}
