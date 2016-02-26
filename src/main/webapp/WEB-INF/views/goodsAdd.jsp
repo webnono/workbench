@@ -60,7 +60,7 @@
     }
     var url='http://yl.jfbxfyl.cn/index.php?mod=app&act=goods&url='+encodeURIComponent(url)+'&callback=?';
     $.getJSON(url,function(data){
-      if(data==null){
+      if(data==null || data.discount_price==null){
         alert('商品不存在或者没参加淘客');
         return false;
       }

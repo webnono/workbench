@@ -11,6 +11,7 @@ import java.net.URLEncoder;
 
 /**
  * Created by Administrator on 2016/2/25.
+ * 如果后期连接过多 可以考虑使用多线程
  */
 public class CheckUtil {
 
@@ -30,15 +31,15 @@ public class CheckUtil {
                 //response实体
                 HttpEntity entity = httpResponse.getEntity();
                 String responseBody = EntityUtils.toString(entity);
-                if (null != responseBody && responseBody.length() > 50){//50表示没有返回我们所需要的商品内容
-                    System.out.println("响应状态码:"+ httpResponse.getStatusLine());
-                    System.out.println("-------------------------------------------------");
-                    System.out.println("响应内容:" + responseBody);
-                    System.out.println("-------------------------------------------------");
-                    System.out.println("响应内容长度:" + responseBody.length());
-                    return true;
-                }else {
+                if (responseBody.length() < 50){//50表示没有返回我们所需要的商品内容
+//                    System.out.println("响应状态码:"+ httpResponse.getStatusLine());
+//                    System.out.println("-------------------------------------------------");
+//                    System.out.println("响应内容:" + responseBody);
+//                    System.out.println("-------------------------------------------------");
+//                    System.out.println("响应内容长度:" + responseBody.length());
                     return false;
+                }else {
+                    return true;
                 }
             } finally{
                 httpResponse.close();
@@ -46,6 +47,6 @@ public class CheckUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
 }
