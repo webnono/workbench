@@ -109,6 +109,31 @@ public class GoodsController {
         return "redirect:/goods/list";
     }
 
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String doEdit(@RequestParam(value = "goodsId", required = false) int[] goodsId,Model model){
+
+          if (goodsId.length == 1){
+              Goods goods = goodsService.selectById(goodsId[0]);
+              model.addAttribute("goods", goods);
+              return "goodsEdit";
+
+          }else {
+              model.addAttribute("error", "只能选择一件商品");
+              return "redirect:/goods/list";
+          }
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String doUpdate(@Valid Goods goods, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) return "goodsEdit";
+        System.out.println(goods.getGoodsCost());
+        System.out.println(goods.getGoodsId());
+          goodsService.update(goods);
+          return "redirect:/goods/list";
+    }
+
+
     @RequestMapping(value = "/delete")
     public String deDelete(@RequestParam("goodsId") Integer[] goodsIds,
                            @RequestParam("pageNo") int pageNo,

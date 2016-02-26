@@ -626,52 +626,62 @@ public class GoodsCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStatusEqualTo(Boolean value) {
+        public Criteria andGoodsStatusEqualTo(String value) {
             addCriterion("goods_status =", value, "goodsStatus");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStatusNotEqualTo(Boolean value) {
+        public Criteria andGoodsStatusNotEqualTo(String value) {
             addCriterion("goods_status <>", value, "goodsStatus");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStatusGreaterThan(Boolean value) {
+        public Criteria andGoodsStatusGreaterThan(String value) {
             addCriterion("goods_status >", value, "goodsStatus");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andGoodsStatusGreaterThanOrEqualTo(String value) {
             addCriterion("goods_status >=", value, "goodsStatus");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStatusLessThan(Boolean value) {
+        public Criteria andGoodsStatusLessThan(String value) {
             addCriterion("goods_status <", value, "goodsStatus");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andGoodsStatusLessThanOrEqualTo(String value) {
             addCriterion("goods_status <=", value, "goodsStatus");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStatusIn(List<Boolean> values) {
+        public Criteria andGoodsStatusLike(String value) {
+            addCriterion("goods_status like", value, "goodsStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsStatusNotLike(String value) {
+            addCriterion("goods_status not like", value, "goodsStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsStatusIn(List<String> values) {
             addCriterion("goods_status in", values, "goodsStatus");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStatusNotIn(List<Boolean> values) {
+        public Criteria andGoodsStatusNotIn(List<String> values) {
             addCriterion("goods_status not in", values, "goodsStatus");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andGoodsStatusBetween(String value1, String value2) {
             addCriterion("goods_status between", value1, value2, "goodsStatus");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andGoodsStatusNotBetween(String value1, String value2) {
             addCriterion("goods_status not between", value1, value2, "goodsStatus");
             return (Criteria) this;
         }
@@ -873,6 +883,76 @@ public class GoodsCriteria {
 
         public Criteria andGoodsUrlNotBetween(String value1, String value2) {
             addCriterion("goods_url not between", value1, value2, "goodsUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterIsNull() {
+            addCriterion("goods_deleter is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterIsNotNull() {
+            addCriterion("goods_deleter is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterEqualTo(String value) {
+            addCriterion("goods_deleter =", value, "goodsDeleter");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterNotEqualTo(String value) {
+            addCriterion("goods_deleter <>", value, "goodsDeleter");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterGreaterThan(String value) {
+            addCriterion("goods_deleter >", value, "goodsDeleter");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterGreaterThanOrEqualTo(String value) {
+            addCriterion("goods_deleter >=", value, "goodsDeleter");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterLessThan(String value) {
+            addCriterion("goods_deleter <", value, "goodsDeleter");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterLessThanOrEqualTo(String value) {
+            addCriterion("goods_deleter <=", value, "goodsDeleter");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterLike(String value) {
+            addCriterion("goods_deleter like", value, "goodsDeleter");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterNotLike(String value) {
+            addCriterion("goods_deleter not like", value, "goodsDeleter");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterIn(List<String> values) {
+            addCriterion("goods_deleter in", values, "goodsDeleter");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterNotIn(List<String> values) {
+            addCriterion("goods_deleter not in", values, "goodsDeleter");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterBetween(String value1, String value2) {
+            addCriterion("goods_deleter between", value1, value2, "goodsDeleter");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsDeleterNotBetween(String value1, String value2) {
+            addCriterion("goods_deleter not between", value1, value2, "goodsDeleter");
             return (Criteria) this;
         }
     }

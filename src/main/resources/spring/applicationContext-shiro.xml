@@ -55,6 +55,7 @@
                             /login = anon
                             /logout = anon
                             /js/** = anon
+                            /addShop = anon
                             /images/** = anon
                             /css/** = anon
                             /** = authc

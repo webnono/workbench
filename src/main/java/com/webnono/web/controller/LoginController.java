@@ -60,6 +60,6 @@ public class LoginController {
 
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
-        return "login";
+        return "/login";
     }
 }

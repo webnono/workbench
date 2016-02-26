@@ -11,6 +11,6 @@ public class IndexController {
 
     @RequestMapping(value = "/index")
     public String indexView(){
-        return "index";
+        return "redirect:/goods/list";
     }
 }

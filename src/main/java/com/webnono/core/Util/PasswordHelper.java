@@ -48,7 +48,7 @@ public class PasswordHelper {
     }
 
     public static void main(String[] args){
-        User user = new User("admin","123456");
+        User user = new User("向运科","123456");
         PasswordHelper passwordHelper = new PasswordHelper();
         passwordHelper.encryptPassword(user);
         System.out.println(user.getPassword());

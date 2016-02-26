@@ -5,6 +5,7 @@ import com.webnono.web.model.User;
 import com.webnono.web.model.UserCriteria;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -22,4 +23,6 @@ public interface UserMapper extends GenericDao<User,Long> {
     int updateByExample(@Param("record") User record, @Param("example") UserCriteria example);
 
     int updateByPrimaryKey(User record);
+
+    List<User> selectByExample(RowBounds rowBounds,UserCriteria criteria);
 }

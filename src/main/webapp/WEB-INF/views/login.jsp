@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2015/4/27
-  Time: 11:23
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
@@ -26,20 +19,6 @@
 <body>
 <div class="login-box">
   <div class="login-tit f20">电商工作平台</div>
-  <%--<form class="login-form" action="login" method="post">--%>
-    <%--<div class="cell">--%>
-      <%--<p style="color: red">${error}</p>--%>
-      <%--<input type="text" name="username" id="username" class="text" placeholder="用户名" style="width:100%">--%>
-
-    <%--</div>--%>
-    <%--<div class="cell">--%>
-      <%--<input type="password" name="password" id="password" class="text" placeholder="密码" style="width:100%">--%>
-    <%--</div>--%>
-    <%--<div class="cell">--%>
-      <%--&lt;%&ndash;<a href="javascript:;" type="submit" class="button btn-e90">登陆</a>&ndash;%&gt;--%>
-      <%--<input type="submit" value="登陆" class="button btn-e90">--%>
-    <%--</div>--%>
-  <%--</form>--%>
   <form:form class="login-form" action="login" method="post" commandName="user">
 
     <div class="cell">

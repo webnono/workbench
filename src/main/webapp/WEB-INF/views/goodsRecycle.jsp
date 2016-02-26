@@ -23,12 +23,12 @@
                 <div class="nav-li">
                     <ul>
                         <li><i></i><a href="/user/list">会员管理</a></li>
-                        <li class="active"><i></i><a href="/goods/list">商品管理</a></li>
+                        <li><i></i><a href="/goods/list">商品管理</a></li>
                         <li><i></i><a href="javascript:;">商家管理</a></li>
                         <li><i></i><a href="javascript:;">订单管理</a></li>
                         <li><i></i><a href="javascript:;">业务员信息</a></li>
                         <li><i></i><a href="/resource/list">资源权限管理</a></li>
-                        <li><i></i><a href="/goods/recycle">商品回收站</a></li>
+                        <li class="active"><i></i><a href="/goods/recycle">商品回收站</a></li>
                     </ul>
                 </div>
                 <div class="jf-f"></div>
@@ -55,10 +55,10 @@
                 <!--搜索-->
                 <div class="searchbox clearfix">
                     <div class="search-item">
-                        <input type="text" class="text" id="goods-uploader" placeholder="上传人的姓名" value="${uploader}">
+                        <input type="text" class="text" id="goods-uploader" placeholder="上传人的姓名">
                     </div>
                     <div class="search-item">
-                        <input type="text" class="text" id="goods-name" placeholder="按商品名搜索" value="${nameGoods}">
+                        <input type="text" class="text" id="goods-name" placeholder="按商品名搜索">
                     </div>
                     <div class="search-item">
                         <input type="text" class="text" placeholder="联系电话">
@@ -77,7 +77,7 @@
                         <th class="toe">地址链接</th>
                         <th>成本价</th>
                         <th>淘宝价格</th>
-                        <th>是否已领取</th>
+                        <th>删除人</th>
                         <th>分类</th>
                         <th>领取时间</th>
                         <th>检查下架</th>
@@ -96,16 +96,9 @@
                             </td>
                             <td>${goods.goodsCost}元</td>
                             <td>${goods.goodsTbPrice}元</td>
-                            <c:if test="${goods.goodsStatus == '1'}">
-                                <td><a id="goods_uploader" class="btn-rec f12" href="#">${goods.goodsUploader}</a></td>
-                            </c:if>
-                            <c:if test="${goods.goodsStatus == '0'}">
-                                <td><a id="goods_uploader" class="btn-rec f12"
-                                       href="/goods/claim?pageNo=${pageData.pageNo}&goodsUploader=<shiro:principal/>&goodsId=${goods.goodsId}">领取</a>
-                                </td>
-                            </c:if>
+                            <td>${goods.goodsDeleter}</td>
                             <td>${goods.goodsCategory}</td>
-                            <td class="get-time">${goods.goodsUploadtime}</td>
+                            <td class="get-time">${goods.goodsDeletetime}</td>
                             <td><a id='${goods.goodsId}' class="cfather fwb f12"
                                    href="javascript:getTaoItem('${goods.goodsUrl}');">检查</a></td>
                         </tr>
@@ -115,24 +108,24 @@
                 <!--分页-->
 
                 <div class="page">
-                    <a class="page-link" href="/goods/list?pageNo=1">首页</a>
+                    <a class="page-link" href="/goods/recycle?pageNo=1">首页</a>
                     <c:if test="${pageData.hasPreviousPage}">
-                        <a class="page-link" href="/goods/list?pageNo=${pageData.prePage}&goodsUploader=${uploader}&goodsName=${nameGoods}">前一页</a>
+                        <a class="page-link" href="/goods/recycle?pageNo=${pageData.prePage}&goodsUploader=${uploader}&goodsName=${nameGoods}">前一页</a>
                     </c:if>
                     <c:forEach items="${pageData.getNavigatePageNums()}" var="nav">
                         <c:if test="${nav == pageData.pageNo}">
                             <a class="page-link" class="page-link" style="font-weight: bold;">${nav}</a>
                         </c:if>
                         <c:if test="${nav != pageData.pageNo}">
-                            <a class="page-link" href="/goods/list?pageNo=${nav}&goodsUploader=${uploader}&goodsName=${nameGoods}">${nav}</a>
+                            <a class="page-link" href="/goods/recycle?pageNo=${nav}&goodsUploader=${uploader}&goodsName=${nameGoods}">${nav}</a>
                         </c:if>
                     </c:forEach>
                     <c:if test="${pageData.hasNextPage}">
                         <td>
-                            <a href="/goods/list?pageNo=${pageData.nextPage}&goodsUploader=${uploader}&goodsName=${nameGoods}">下一页</a>
+                            <a href="/goods/recycle?pageNo=${pageData.nextPage}&goodsUploader=${uploader}&goodsName=${nameGoods}">下一页</a>
                         </td>
                     </c:if>
-                    <a class="page-link" href="/goods/list?pageNo=${pageData.totalPages}&goodsUploader=${uploader}&goodsName=${nameGoods}">末页</a>
+                    <a class="page-link" href="/goods/recycle?pageNo=${pageData.totalPages}&goodsUploader=${uploader}&goodsName=${nameGoods}">末页</a>
                 </div>
 
                 <!--end 分页-->
@@ -144,9 +137,9 @@
                         <input type="button" id="cancel" value="取消" class="btn-select">
                     </div>
                     <div class="fr">
-                        <a class="btn-del" href="/check">查找已经下架的商品</a>
-                        <a href="/goods/save"><input type="button" value="添加" class="btn-add"></a>
-                        <a id="del-goods" href="javascript:deleteBatch();"> <input type="button" value="删除"
+                        <%--<a class="btn-del" href="goods_list?method=findGoodsUrl">查找已经下架的商品</a>--%>
+                        <%--<a href="/goods/save"><input type="button" value="添加" class="btn-add"></a>--%>
+                        <a id="del-goods" href="javascript:revert();"> <input type="button" value="撤销删除"
                                                                                    class="btn-del"></a>
 
                         <a href="javascript:modify();"><input type="button" value="修改" class="btn-edit"></a>
@@ -166,20 +159,15 @@
 </form>
 
 <script>
-    function deleteBatch(){
-        $("#mainForm").attr("action","/goods/delete?pageNo="+${pageData.pageNo});
+    function revert(){
+        $("#mainForm").attr("action","/goods/revertDelete?pageNo="+${pageData.pageNo});
         $("#mainForm").submit();
     }
     function search(){
-
         var goodsUploader = $('#goods-uploader').val();
         var goodsName = $('#goods-name').val();
-        location.href = "/goods/list?goodsUploader="+goodsUploader+"&goodsName="+goodsName;
-    }
-
-    function modify(){
-        $("#mainForm").attr("action", "/goods/edit?pageNo=" + ${pageData.pageNo});
-        $("#mainForm").submit();
+        url = "/goods/recycle?goodsUploader="+goodsUploader+"&goodsName="+goodsName;
+        window.open(url,"_self");
     }
 </script>
 </body>

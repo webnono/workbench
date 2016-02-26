@@ -2,11 +2,15 @@ package com.webnono.web.service.impl;
 
 import com.webnono.core.generic.GenericDao;
 import com.webnono.core.generic.GenericServiceImpl;
+import com.webnono.core.pagehelper.IPageQueryModel;
+import com.webnono.core.pagehelper.PageModel;
 import com.webnono.web.dao.UserMapper;
+import com.webnono.web.model.Goods;
 import com.webnono.web.model.User;
 import com.webnono.web.model.UserCriteria;
 import com.webnono.web.service.RoleService;
 import com.webnono.web.service.UserService;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,5 +61,14 @@ public class UserServiceImpl extends GenericServiceImpl<User,Long> implements Us
             return Collections.EMPTY_LIST;
         }
        return roleService.selectPermissions(user.getRoleIds());
+    }
+
+    @Override
+    public PageModel<User> getUserByCriteria(IPageQueryModel pageQueryModel, UserCriteria criteria) {
+        RowBounds rowBounds = new RowBounds(pageQueryModel.getStart(),pageQueryModel.getLimit());
+        List<User> goodsList = userMapper.selectByExample(rowBounds,criteria);
+        int count = userMapper.countByExample(criteria);
+        PageModel pageModel = new PageModel(count,goodsList,pageQueryModel);
+        return pageModel;
     }
 }

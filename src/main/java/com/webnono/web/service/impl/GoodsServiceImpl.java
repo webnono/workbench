@@ -35,4 +35,14 @@ public class GoodsServiceImpl extends GenericServiceImpl<Goods,Integer> implemen
         PageModel pageModel = new PageModel(count,goodsList,pageQueryModel);
         return pageModel;
     }
+
+    @Override
+    public List<Goods> getGoodsByCriteria(GoodsCriteria criteria) {
+        return goodsMapper.selectByExample(criteria);
+    }
+
+    @Override
+    public void deleteBatch(GoodsCriteria criteria) {
+
+    }
 }

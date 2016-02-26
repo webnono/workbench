@@ -44,10 +44,10 @@
         </javaClientGenerator>
 
         <!--对应数据库表名 -->
-        <table tableName="sys_user" domainObjectName="User"/>
-        <table tableName="sys_organization" domainObjectName="Organization"/>
-        <table tableName="sys_resource" domainObjectName="Resource"/>
-        <table tableName="sys_role" domainObjectName="Role"/>
+        <!--<table tableName="sys_user" domainObjectName="User"/>-->
+        <!--<table tableName="sys_organization" domainObjectName="Organization"/>-->
+        <!--<table tableName="sys_resource" domainObjectName="Resource"/>-->
+        <!--<table tableName="sys_role" domainObjectName="Role"/>-->
         <table tableName="goods" domainObjectName="Goods"/>
 
 
