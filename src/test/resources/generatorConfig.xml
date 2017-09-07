@@ -49,6 +49,7 @@
         <!--<table tableName="sys_resource" domainObjectName="Resource"/>-->
         <!--<table tableName="sys_role" domainObjectName="Role"/>-->
         <table tableName="goods" domainObjectName="Goods"/>
+        <table tableName="goods" domainObjectName="Goods"/>
 
 
     </context>
